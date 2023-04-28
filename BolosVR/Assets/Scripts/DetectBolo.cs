@@ -7,7 +7,7 @@ public class DetectBolo : MonoBehaviour
 {
     [SerializeField] private Transform[] pins;
     [SerializeField] private TextMeshProUGUI txtFallen;
-    private float threshHold = 0.3f;
+    private float threshHold = 1f;
     private int fallen;
 
     private void hasFall()
@@ -18,7 +18,6 @@ public class DetectBolo : MonoBehaviour
             if (pin.up.y < threshHold && !pin.GetComponent<pinBehaviour>().hasFall)
             {
                 pin.GetComponent<pinBehaviour>().hasFall = true;
-                pin.gameObject.SetActive(false);
                 fallen++;
                 txtFallen.text = fallen.ToString();
             }

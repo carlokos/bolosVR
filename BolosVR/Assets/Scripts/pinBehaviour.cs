@@ -5,16 +5,11 @@ using UnityEngine;
 public class pinBehaviour : MonoBehaviour
 {
     public bool hasFall = false;
-    public Transform defaultPosition;
+    private Transform defaultPosition;
 
     private void Start()
     {
-        defaultPosition.position = transform.position;
-    }
-
-    private void Update()
-    {
-        Debug.Log("UPy del bolo:" + transform.up.y.ToString());
+        defaultPosition = gameObject.transform;
     }
 
     public void restorePin()

@@ -17,6 +17,7 @@ public class BallSpawner : MonoBehaviour
     {
         ball.SetActive(false);
         ball.transform.position = ballSpawnPoint.position;
+        ball.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
         yield return new WaitForSeconds(2f);
         ball.SetActive(true);
     }

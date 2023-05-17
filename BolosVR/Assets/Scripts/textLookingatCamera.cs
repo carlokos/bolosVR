@@ -14,6 +14,6 @@ public class textLookingatCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.rotation = Quaternion.Euler(lookAtPlayer.transform.rotation.x, lookAtPlayer.transform.rotation.y, lookAtPlayer.transform.rotation.z);
+        transform.rotation = lookAtPlayer.transform.rotation;
     }
 }

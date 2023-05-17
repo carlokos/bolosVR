@@ -10,6 +10,7 @@ public class BallSpawner : MonoBehaviour
     {
         if (other.gameObject.CompareTag("ball")){
             StartCoroutine(spawnBall(other.gameObject));
+            GameManager.instance.restTries();
         }
     }
 
@@ -18,7 +19,8 @@ public class BallSpawner : MonoBehaviour
         ball.SetActive(false);
         ball.transform.position = ballSpawnPoint.position;
         ball.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        GameManager.instance.quitFallenPins();
         ball.SetActive(true);
     }
 }

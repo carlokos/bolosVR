@@ -6,9 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Transform[] pins;
-    [SerializeField] private GameObject cvInfo;
     [SerializeField] private TextMeshProUGUI txtFallen;
-    [SerializeField] private TextMeshProUGUI txtInfo;
     [SerializeField] private AudioSource strikeSound;
     [SerializeField] private AudioSource hitSound;
     public int tries;
@@ -21,7 +19,6 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         tries = 2;
-        cvInfo.SetActive(false);
     }
     
 
@@ -60,13 +57,11 @@ public class GameManager : MonoBehaviour
         if(tries <= 0)
         {
             //reiniciamos la escena y mostramos la puntuacion
-            txtInfo.text = "Has conseguido derribar " + fallen.ToString() + " bolos, reiniciando la pista...";
             StartCoroutine(showInfo());
         }   
 
         if(fallen >= pins.Length)
         {
-            txtInfo.text = "HAS HECHO UN PLENO, ENHORABUENA";
             strikeSound.Play();
             StartCoroutine(showInfo());
         }
@@ -85,9 +80,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator showInfo()
     {
-        cvInfo.SetActive(true);
         yield return new WaitForSeconds(0.8f);
-        cvInfo.SetActive(false);
         restorePins();
     }
 }

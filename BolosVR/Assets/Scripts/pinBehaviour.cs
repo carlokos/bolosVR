@@ -15,6 +15,7 @@ public class pinBehaviour : MonoBehaviour
     public void restorePin()
     {
         hasFall = false;
+        gameObject.SetActive(true);
         transform.position = defaultPosition.position;
     }
 }
